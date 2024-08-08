@@ -7,6 +7,10 @@ import Form from "./components/Form/Form";
 import TaskList from "./components/TaskList/TaskList";
 import TaskCounter from "./components/TasksCounter/TasksCounter";
 import StatusFilter from "./components/StatusFilter/StatusFilter";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTasks } from "./redux/operations";
+import { getError, getIsLoading } from "./redux/selectors";
+import { Layout } from "./components/Layout/Layout";
 
 function App() {
   const [currentColor, setCurrentColor] = useState(() => {
@@ -21,8 +25,20 @@ function App() {
     setCurrentColor(color);
   };
 
+  const dispatch = useDispatch();
+  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
+
+  // // Отримуємо частини стану
+  // const { items, isLoading, error } = useSelector(getTasks);
+
+  // Викликаємо операцію
+  useEffect(() => {
+    dispatch(fetchTasks());
+  }, [dispatch]);
+
   return (
-    <div>
+    <Layout>
       <Background
         currentColor={currentColor}
         onChangeColor={handleChangeColor}
@@ -32,9 +48,13 @@ function App() {
       <StatusFilter />
       <TaskCounter />
       <Filter />
+      {isLoading && !error && <p>Request in progress...</p>}
       <TaskList />
       <p className="footer">Vite + React + Redux project - Ira Prysiazhna</p>
-    </div>
+      {/* {isLoading && <p>Loading tasks...</p>}
+      {error && <p>{error}</p>}
+      <p>{items.length > 0 && JSON.stringify(items, null, 2)}</p> */}
+    </Layout>
   );
 }
 

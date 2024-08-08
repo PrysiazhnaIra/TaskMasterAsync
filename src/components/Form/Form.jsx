@@ -1,8 +1,6 @@
 import css from "./Form.module.css";
-// Імпортуємо хук
 import { useDispatch } from "react-redux";
-// Імпортуємо генератор екшену
-import { addTask } from "../../redux/tasksSlice";
+import { addTask } from "../../redux/operations";
 
 export default function Form() {
   // Отримуємо посилання на функцію відправки екшенів
@@ -15,8 +13,8 @@ export default function Form() {
     // Викликаємо генератор екшену
     // та передаємо текст завдання для поля payload
     // Відправляємо результат – екшен створення завдання
-    dispatch(addTask(form.elements.text.value));
 
+    dispatch(addTask(form.elements.text.value));
     form.reset();
   };
   return (
