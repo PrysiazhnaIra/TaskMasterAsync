@@ -9,7 +9,7 @@ import TaskCounter from "./components/TasksCounter/TasksCounter";
 import StatusFilter from "./components/StatusFilter/StatusFilter";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTasks } from "./redux/operations";
-import { getError, getIsLoading } from "./redux/selectors";
+import { selectError, selectIsLoading } from "./redux/selectors";
 import { Layout } from "./components/Layout/Layout";
 
 function App() {
@@ -26,8 +26,8 @@ function App() {
   };
 
   const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   // // Отримуємо частини стану
   // const { items, isLoading, error } = useSelector(getTasks);
@@ -43,7 +43,7 @@ function App() {
         currentColor={currentColor}
         onChangeColor={handleChangeColor}
       />
-      <h1 className="title">Task Master</h1>
+      <h1 className="title">A country I need to visit</h1>
       <Form />
       <StatusFilter />
       <TaskCounter />

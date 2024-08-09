@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { deleteTask, toggleCompleted } from "../../redux/operations";
 
 export default function Task({ task }) {
-  console.log("Task in Component:", task);
   // Отримуємо посилання на функцію відправки екшенів
   const dispatch = useDispatch();
 

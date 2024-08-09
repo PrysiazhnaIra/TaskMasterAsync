@@ -23,7 +23,7 @@ export default function Form() {
         className={css.field}
         type="text"
         name="text"
-        placeholder="Please, enter your task text..."
+        placeholder="Please, enter your country..."
       />
       <button type="submit" className={css.btn}>
         Add

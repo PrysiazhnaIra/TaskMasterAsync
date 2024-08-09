@@ -1,11 +1,11 @@
 // оголошення функцій-селекторів
 
-export const getTasks = (state) => state.tasks.items;
+export const selectTasks = (state) => state.tasks.items;
 
-export const getIsLoading = (state) => state.tasks.isLoading;
+export const selectIsLoading = (state) => state.tasks.isLoading;
 
-export const getError = (state) => state.tasks.error;
+export const selectError = (state) => state.tasks.error;
 
-export const getStatusFilter = (state) => state.filters.status;
+export const selectStatusFilter = (state) => state.filters.status;
 
-export const getSearchFilter = (state) => state.filters.search;
+export const selectSearchFilter = (state) => state.filters.search;
